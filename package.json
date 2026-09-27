@@ -1,13 +1,13 @@
 {
-  "name": "vscode-monorepo-workspace",
-  "displayName": "Monorepo Workspace",
-  "description": "Manage monorepos with multi-root workspaces. Supports Lerna, Yarn, Pnpm, Rushjs and recursive package directories",
-  "version": "1.3.1",
-  "publisher": "folke",
-  "repository": "http://github.com/folke/vscode-monorepo-workspace",
+  "name": "vscode-improved-workspaces",
+  "displayName": "Improved Workspaces",
+  "description": "Show or hide any workspace folder, including auto-detected Lerna, Yarn, Pnpm and Rush monorepo packages",
+  "version": "1.0.0",
+  "publisher": "OneEyed1366",
+  "repository": "https://github.com/OneEyed1366/vscode-improved-workspaces",
   "license": "SEE LICENSE IN LICENSE",
   "engines": {
-    "vscode": ">=1.53.0"
+    "vscode": ">=1.64.0"
   },
   "categories": [
     "Other"
@@ -17,7 +17,12 @@
     "monorepo",
     "project",
     "yarn",
-    "folder"
+    "lerna",
+    "pnpm",
+    "rush",
+    "folder",
+    "hide",
+    "visibility"
   ],
   "activationEvents": [
     "workspaceContains:**/package.json"
@@ -27,75 +32,75 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.openPackageCurrentWindow",
-        "title": "Monorepo: Open Package (Current Window)"
+        "command": "improvedWorkspaces.openPackageCurrentWindow",
+        "title": "Improved Workspaces: Open Package (Current Window)"
       },
       {
-        "command": "extension.openPackageNewWindow",
-        "title": "Monorepo: Open Package (New Window)"
+        "command": "improvedWorkspaces.openPackageNewWindow",
+        "title": "Improved Workspaces: Open Package (New Window)"
       },
       {
-        "command": "extension.openPackageWorkspaceFolder",
-        "title": "Monorepo: Open Package (Workspace Folder)"
+        "command": "improvedWorkspaces.openPackageWorkspaceFolder",
+        "title": "Improved Workspaces: Open Package (Workspace Folder)"
       },
       {
-        "command": "extension.select",
-        "title": "Monorepo: Select Workspace Folders"
+        "command": "improvedWorkspaces.select",
+        "title": "Improved Workspaces: Select Workspace Folders"
       },
       {
-        "command": "extension.updateAll",
-        "title": "Monorepo: Sync Workspace Folders"
+        "command": "improvedWorkspaces.updateAll",
+        "title": "Improved Workspaces: Sync Workspace Folders"
       }
     ],
     "configuration": {
-      "title": "Monorepo Workspace",
+      "title": "Improved Workspaces",
       "properties": {
-        "monorepoWorkspace.includeRoot": {
+        "improvedWorkspaces.includeRoot": {
           "type": "boolean",
           "default": true,
           "description": "Inlcude the top-level monorepo root path as a workspace folder"
         },
-        "monorepoWorkspace.folders.regex.apps": {
+        "improvedWorkspaces.folders.regex.apps": {
           "type": "string",
           "default": "^app|web|api|frontend|backend",
           "description": "Regex to match app-like package paths"
         },
-        "monorepoWorkspace.folders.prefix.apps": {
+        "improvedWorkspaces.folders.prefix.apps": {
           "type": "string",
           "default": "🚀 ",
           "description": "Folder prefix for apps"
         },
-        "monorepoWorkspace.folders.regex.libs": {
+        "improvedWorkspaces.folders.regex.libs": {
           "type": "string",
           "default": "^common|package|lib|private",
           "description": "Regex to match library-like package paths"
         },
-        "monorepoWorkspace.folders.prefix.libs": {
+        "improvedWorkspaces.folders.prefix.libs": {
           "type": "string",
           "default": "📦 ",
           "description": "Folder prefix for libraries"
         },
-        "monorepoWorkspace.folders.regex.tools": {
+        "improvedWorkspaces.folders.regex.tools": {
           "type": "string",
           "default": "^tool|script|util",
           "description": "Regex to match tool-like package paths"
         },
-        "monorepoWorkspace.folders.prefix.tools": {
+        "improvedWorkspaces.folders.prefix.tools": {
           "type": "string",
           "default": "⚙️ ",
           "description": "Folder prefix for tools"
         },
-        "monorepoWorkspace.folders.prefix.unknown": {
+        "improvedWorkspaces.folders.prefix.unknown": {
           "type": "string",
           "default": "",
           "description": "Folder prefix for unknown packages"
         },
-        "monorepoWorkspace.folders.prefix.root": {
+        "improvedWorkspaces.folders.prefix.root": {
           "type": "string",
           "default": "✨ ",
           "description": "Folder prefix for the root folder"
         },
-        "monorepoWorkspace.folders.custom": {
+        "improvedWorkspaces.folders.custom": {
           "type": "array",
           "default": [],
           "description": "An array of custom 'regex/prefix' pairs like: [{regex:'foo', prefix:'bar'}, {regex:'fffoo', prefix:'bbbar'}]"
@@ -118,7 +123,7 @@
     "@types/glob": "7.1.3",
     "@types/mocha": "8.2.1",
     "@types/node": "14.14.31",
-    "@types/vscode": "1.53.0",
+    "@types/vscode": "1.64.0",
     "@typescript-eslint/eslint-plugin": "4.15.2",
     "@typescript-eslint/parser": "4.15.2",
     "devmoji": "2.2.0",
@@ -137,7 +142,6 @@
     "prettier": "2.2.1",
     "rollup": "2.40.0",
     "rollup-plugin-terser": "7.0.2",
-    "rollup-plugin-typescript2": "0.30.0",
     "tslib": "2.1.0",
     "typescript": "4.2.2",
     "vscode-test": "1.5.1"
